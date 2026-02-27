@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelForge Studio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>PixelForge Studio</h1>
+      <p class="subtitle">Fast browser-based photo editing inspired by Picsart-style workflows</p>
+    </header>
+
+    <main class="layout">
+      <aside class="panel controls" aria-label="Editor controls">
+        <section>
+          <h2>Import</h2>
+          <label class="file-input">
+            <span>Upload image</span>
+            <input id="upload" type="file" accept="image/*" />
+          </label>
+          <button id="reset">Reset image</button>
+          <button id="download">Download PNG</button>
+        </section>
+
+        <section>
+          <h2>Adjustments</h2>
+          <div class="control-grid">
+            <label>Brightness <output id="brightnessOut">100</output>
+              <input id="brightness" type="range" min="0" max="200" value="100" />
+            </label>
+            <label>Contrast <output id="contrastOut">100</output>
+              <input id="contrast" type="range" min="0" max="200" value="100" />
+            </label>
+            <label>Saturation <output id="saturationOut">100</output>
+              <input id="saturation" type="range" min="0" max="200" value="100" />
+            </label>
+            <label>Blur <output id="blurOut">0</output>
+              <input id="blur" type="range" min="0" max="20" value="0" />
+            </label>
+            <label>Hue <output id="hueOut">0</output>
+              <input id="hue" type="range" min="0" max="360" value="0" />
+            </label>
+            <label>Opacity <output id="opacityOut">100</output>
+              <input id="opacity" type="range" min="0" max="100" value="100" />
+            </label>
+          </div>
+        </section>
+
+        <section>
+          <h2>Filters</h2>
+          <div class="button-row">
+            <button data-filter="none">Original</button>
+            <button data-filter="grayscale(100%)">B&W</button>
+            <button data-filter="sepia(90%)">Vintage</button>
+            <button data-filter="invert(100%)">Invert</button>
+            <button data-filter="contrast(140%) saturate(130%)">Pop</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>Transform</h2>
+          <div class="button-row">
+            <button id="rotateLeft">Rotate ⟲</button>
+            <button id="rotateRight">Rotate ⟳</button>
+            <button id="flipX">Flip X</button>
+            <button id="flipY">Flip Y</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>Text overlay</h2>
+          <input id="captionText" type="text" maxlength="80" placeholder="Type caption" />
+          <div class="inline-controls">
+            <input id="captionColor" type="color" value="#ffffff" aria-label="Caption color" />
+            <input id="captionSize" type="range" min="16" max="72" value="36" />
+          </div>
+          <button id="addCaption">Add centered caption</button>
+        </section>
+      </aside>
+
+      <section class="panel editor" aria-label="Canvas preview">
+        <canvas id="canvas" width="900" height="600"></canvas>
+        <p id="hint">Upload an image to start editing.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
